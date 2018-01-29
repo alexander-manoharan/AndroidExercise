@@ -13,7 +13,7 @@ public class MainActivity extends Activity implements MvpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MvpPresenter mvpPresenter = new MvpPresenter(MainActivity.this);
+        MvpPresenter mvpPresenter = new MvpPresenter(MainActivity.this, this);
         mvpPresenter.start();
     }
 

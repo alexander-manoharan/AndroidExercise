@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="json_url" type="string">
-        https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json
+    <item name="json_base_url" type="string">
+        https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/
+    </item>
+    <item name="json_file_name" type="string">
+        facts.json
     </item>
 </resources>
