@@ -18,8 +18,8 @@ public class MainActivity extends Activity implements MvpView {
     }
 
     @Override
-    public void updateTitle() {
-
+    public void updateTitle(String title) {
+        getActionBar().setTitle(title);
     }
 
     @Override

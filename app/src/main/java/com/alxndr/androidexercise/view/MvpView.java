@@ -8,5 +8,5 @@ import android.widget.TextView;
 
 public interface MvpView {
     void refreshView();
-    void updateTitle();
+    void updateTitle(String title);
 }
