@@ -2,6 +2,7 @@ package com.alxndr.androidexercise.presenter;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.inputmethodservice.Keyboard;
 import android.util.Log;
 
 import com.alxndr.androidexercise.R;
@@ -15,6 +16,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import com.alxndr.androidexercise.utils.JSONFileDownloader;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -22,6 +24,7 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 /**
  * Created by manoharana on 29/01/18.
@@ -74,7 +77,7 @@ public class MvpPresenter {
                             //stringBuilder.append(jsonData);
                         }
                         json = stringBuilder.toString();
-                        Log.i(TAG, "string = " + json);
+                       // Log.i(TAG, "string = " + json);
                         parseJson(json);
                     } catch (IOException exception) {
                         exception.printStackTrace();
@@ -92,12 +95,29 @@ public class MvpPresenter {
     private void parseJson (String json)
     {
         String title;
+        String description;
+        String imageRef;
         JSONObject jsonObject = null;
+        JSONArray rows;
+        int nRows;
+
         try {
             jsonObject = new JSONObject(json);
             title = jsonObject.getString("title");
             mvpModel.setTitle(title);
             mvpView.updateTitle(title);
+
+            rows = jsonObject.getJSONArray("rows");
+            nRows = rows.length();
+            for (int counter = 0; counter < nRows; counter++)   {
+                jsonObject = rows.getJSONObject(counter);
+                title = jsonObject.getString("title");
+                description = jsonObject.getString("description");
+                imageRef = jsonObject.getString("imageHref");
+                Log.i(TAG, "adding row " + title + " " + description);
+                mvpModel.addRow(title, description, imageRef);
+            }
+            mvpView.setRowItems((ArrayList<MvpModel.RowItem>)mvpModel.getRowItems());
         } catch (JSONException exception)   {
             exception.printStackTrace();
         }
