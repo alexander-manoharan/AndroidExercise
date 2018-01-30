@@ -60,7 +60,13 @@ public class ListArrayAdapter extends ArrayAdapter<MvpModel.RowItem> {
         viewHolder.description.setText(rowItem.getDescription());
 
         Picasso.with(getContext()).setLoggingEnabled(true);
-        Picasso.with(getContext()).load(rowItem.getImageRef()).into(viewHolder.imageView);
+        Log.i("ArrayAdapter", "imageref " + rowItem.getImageRef());
+        if (!rowItem.getImageRef().equals("null")) {
+            Picasso.with(getContext()).load(rowItem.getImageRef()).into(viewHolder.imageView);
+        }
+        else {
+            Log.i("ArrayAdapter", "image is null. not loading it");
+        }
         return convertView;
     }
 }

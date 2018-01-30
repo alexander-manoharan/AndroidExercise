@@ -154,11 +154,11 @@ public class MvpPresenter {
                 title = jsonObject.getString("title");
                 description = jsonObject.getString("description");
                 imageRef = jsonObject.getString("imageHref");
-                Log.i(TAG, "adding row " + title + " " + description);
+                Log.i(TAG, "imageref " + imageRef);
 
                 // It is not clear how to handle row items that doesn't have any data in a row.
                 // Hence, I am not adding any data to the list only if all the data are null.
-                if (!title.equals("null") && !description.equals("null") && !imageRef.equals("null")) {
+                if (!title.equals("null") || !description.equals("null") || !imageRef.equals("null")) {
                     // Update Model with row
                     mvpModel.addRow(title, description, imageRef);
                 }

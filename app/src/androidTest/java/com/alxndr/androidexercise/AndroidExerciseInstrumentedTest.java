@@ -5,6 +5,7 @@ import android.media.Image;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -59,9 +60,9 @@ public class AndroidExerciseInstrumentedTest {
         int count = listView.getAdapter().getCount();
         ListArrayAdapter adapter = (ListArrayAdapter) listView.getAdapter();
         for (int i = 0; i < count; i++) {
-            assertNotNull("title is null", adapter.getItem(i).getTitle());
-            assertNotNull("description is null", adapter.getItem(i).getDescription());
-            assertNotNull("title is null", adapter.getItem(i).getImageRef());
+            assertNotEquals("null", adapter.getItem(i).getTitle());
+            assertNotEquals("null", adapter.getItem(i).getDescription());
+            assertNotEquals("null", adapter.getItem(i).getImageRef());
         }
         assertNotEquals(0, count);
     }
