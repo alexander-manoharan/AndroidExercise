@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity implements MvpView {
 
     private ArrayList<MvpModel.RowItem> rowItems;
-    MvpPresenter mvpPresenter;
+    private MvpPresenter mvpPresenter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ListView listView;
 

@@ -119,6 +119,7 @@ public class MvpPresenter {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.i(TAG, "Failure error received.");
+                // We have not received any text body from server. Nothing we could do.
             }
         });
     }
